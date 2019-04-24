@@ -5,21 +5,9 @@ public class MultiplicationTable {
     public static void main(String[] args) {
         printMultiplicationTable(4);
         System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
         printMultiplicationTable(7);
         System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
         printMultiplicationTable(10);
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
         System.out.println();
         printMultiplicationTable(12);
 
@@ -29,47 +17,24 @@ public class MultiplicationTable {
         if (size >= 1 && size <= 12) {
             int rowNumber = 0;
             int columnNumber = 1;
-            //first row
+            System.out.printf("%6s", " ");
             for (int i = columnNumber; i <= size; i++) {
-                if (i == 1) {
-                    System.out.print("      ");
-                } else if (i > 1 && i <= 9) {
-                    System.out.print("     ");
-                } else {
-                    System.out.print("    ");
-                }
-                System.out.print(i);
-                if (i == size) {
-                    System.out.println();
-                    System.out.println();
-                }
+                System.out.printf("%-6d", i);
             }
-            //next rows
-            rowNumber = 1;
+            System.out.println();
+            System.out.println();
+            rowNumber++;
             columnNumber = 0;
             for (int i = columnNumber; i <= size; i++) {
                 if (i == 0) {
-                    System.out.print(rowNumber);
+                    System.out.printf("%-6d", rowNumber);
                     continue;
                 }
-                if ((rowNumber <= 9 && i * rowNumber <= 9)) {
-                    System.out.print("     ");
-                } else if ((rowNumber <= 9 && i * rowNumber >= 10 && i * rowNumber <= 99)) {
-                    System.out.print("    ");
-                } else if ((rowNumber <= 9 && i * rowNumber >= 100)) {
-                    System.out.print("   ");
-                } else if ((rowNumber >= 10 && i * rowNumber == rowNumber)) {
-                    System.out.print("   ");
-                } else if ((rowNumber >= 10 && i * rowNumber > rowNumber && i * rowNumber <= 99)) {
-                    System.out.print("    ");
-                } else if ((rowNumber >= 10 && i * rowNumber >= 100)) {
-                    System.out.print("   ");
-                }
-                System.out.print(i * rowNumber);
+                System.out.printf("%-6d", i * rowNumber);
                 if (i == size && rowNumber < size) {
                     System.out.println();
                     System.out.println();
-                    rowNumber = rowNumber + 1;
+                    rowNumber++;
                     i = -1;
                 }
             }
