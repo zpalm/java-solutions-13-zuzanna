@@ -8,15 +8,15 @@ public class FooBar {
 
     public static void fooBar(int firstNumber, int lastNumber) {
         for (int i = firstNumber; i <= lastNumber; i++) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(i).append(" ");
-            if (i % 3 == 0) {
-                sb.append("Foo");
+            System.out.print(i);
+            if (i % 15 == 0) {
+                System.out.print(" FooBar");
+            } else if (i % 3 == 0) {
+                System.out.print(" Foo");
+            } else if (i % 5 == 0) {
+                System.out.print(" Bar");
             }
-            if (i % 5 == 0) {
-                sb.append("Bar");
-            }
-            System.out.println(sb);
+            System.out.println();
         }
     }
 }
