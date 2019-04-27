@@ -25,7 +25,7 @@ public class ChristmasTree {
         for (int i = 1; i < (size - 2); i++) {
             System.out.print(" ");
         }
-        for (int i = size - 2; i < size; i++) {
+        for (int i = (size - 2); i < size; i++) {
             System.out.print("*");
         }
     }
