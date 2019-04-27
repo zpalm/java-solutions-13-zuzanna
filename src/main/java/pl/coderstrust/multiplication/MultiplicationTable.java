@@ -15,28 +15,22 @@ public class MultiplicationTable {
 
     public static void printMultiplicationTable(int size) {
         if (size >= 1 && size <= 12) {
-            int rowNumber = 0;
-            int columnNumber = 1;
             System.out.printf("%6s", " ");
-            for (int i = columnNumber; i <= size; i++) {
+            for (int i = 1; i <= size; i++) {
                 System.out.printf("%-6d", i);
             }
             System.out.println();
             System.out.println();
-            rowNumber++;
-            columnNumber = 0;
-            for (int i = columnNumber; i <= size; i++) {
-                if (i == 0) {
-                    System.out.printf("%-6d", rowNumber);
-                    continue;
+            int columnNumber = 0;
+            for (int i = 1; i <= size; i++) {
+                System.out.printf("%-6d", i);
+                columnNumber++;
+                for (int j = columnNumber; j <= size; j++) {
+                    System.out.printf("%-6d", j * i);
                 }
-                System.out.printf("%-6d", i * rowNumber);
-                if (i == size && rowNumber < size) {
-                    System.out.println();
-                    System.out.println();
-                    rowNumber++;
-                    i = -1;
-                }
+                System.out.println();
+                System.out.println();
+                columnNumber = 0;
             }
         }
     }
