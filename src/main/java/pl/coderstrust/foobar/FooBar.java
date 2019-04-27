@@ -9,14 +9,14 @@ public class FooBar {
     public static void fooBar(int firstNumber, int lastNumber) {
         for (int i = firstNumber; i <= lastNumber; i++) {
             StringBuilder foobar = new StringBuilder();
-            sb.append(i).append(" ");
+            foobar.append(i).append(" ");
             if (i % 3 == 0) {
-                sb.append("Foo");
+                foobar.append("Foo");
             }
             if (i % 5 == 0) {
-                sb.append("Bar");
+                foobar.append("Bar");
             }
-            System.out.println(sb);
+            System.out.println(foobar);
         }
     }
 }
