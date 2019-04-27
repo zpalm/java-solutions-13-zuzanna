@@ -8,7 +8,7 @@ public class FooBar {
 
     public static void fooBar(int firstNumber, int lastNumber) {
         for (int i = firstNumber; i <= lastNumber; i++) {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder foobar = new StringBuilder();
             sb.append(i).append(" ");
             if (i % 3 == 0) {
                 sb.append("Foo");
