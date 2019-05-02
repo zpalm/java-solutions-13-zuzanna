@@ -14,20 +14,20 @@ public class PascalTriangle {
         if (number < 1) {
             throw new IllegalArgumentException("Number must be greater than 0.");
         }
-        long pascalTerm = 0;
+        long nodeValue = 0;
         for (int i = 0; i < number; i++) {
             for (int j = 0; j < (number - i); j++) {
-                System.out.print("   ");
+                System.out.printf("%3s", "");
             }
             for (int j = 0; j <= i; j++) {
-                pascalTerm = factorial(i) / (factorial(j) * factorial(i - j));
-                System.out.printf("%-6d", pascalTerm);
+                nodeValue = factorial(i) / (factorial(j) * factorial(i - j));
+                System.out.printf("%-6d", nodeValue);
             }
             System.out.println();
         }
     }
 
-    public static long factorial(int number) {
+    private static long factorial(int number) {
         long result = 1;
         for (int i = 1; i <= number; i++) {
             result = result * i;
