@@ -12,10 +12,13 @@ public class FibonacciIterative {
         if (fibonacciNumberInOrder < 0) {
             throw new IllegalArgumentException("The number must be greater than or equal to 0.");
         }
+        if (fibonacciNumberInOrder < 2) {
+            return fibonacciNumberInOrder;
+        }
         long temp = 0;
         long previousValue = 1;
-        long actualValue = 0;
-        for (int i = 1; i < fibonacciNumberInOrder; i++) {
+        long actualValue = 1;
+        for (int i = 2; i <= fibonacciNumberInOrder; i++) {
             actualValue = temp + previousValue;
             temp = previousValue;
             previousValue = actualValue;
