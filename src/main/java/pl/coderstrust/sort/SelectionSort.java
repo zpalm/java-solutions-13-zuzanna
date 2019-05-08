@@ -14,19 +14,22 @@ public class SelectionSort {
     }
 
     public static int[] sort(int[] array) {
-        int[] sorted = new int[array.length];
-        System.arraycopy(array, 0, sorted, 0, array.length);
-        for (int i = 0; i < (sorted.length - 1); i++) {
+        int[] sortedArray = Arrays.copyOf(array, array.length);
+        for (int i = 0; i < (sortedArray.length - 1); i++) {
             int min = i;
-            for (int j = (i + 1); j < sorted.length; j++) {
-                if (sorted[min] > sorted[j]) {
+            for (int j = (i + 1); j < sortedArray.length; j++) {
+                if (sortedArray[min] > sortedArray[j]) {
                     min = j;
                 }
             }
-            int temp = sorted[i];
-            sorted[i] = sorted[min];
-            sorted[min] = temp;
+            swap(sortedArray, i, min);
         }
-        return sorted;
+        return sortedArray;
+    }
+
+    private static void swap(int array[], int a, int b) {
+        int temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
     }
 }

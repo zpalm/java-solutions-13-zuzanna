@@ -14,17 +14,26 @@ public class BubbleSort {
     }
 
     public static int[] sort(int[] array) {
-        int[] sorted = new int[array.length];
-        System.arraycopy(array, 0, sorted, 0, array.length);
-        for (int i = 0; i < (sorted.length - 1); i++) {
-            for (int j = 0; j < (sorted.length - 1); j++) {
-                if (sorted[j] > sorted[j + 1]) {
-                    int temp = sorted[j];
-                    sorted[j] = sorted[j + 1];
-                    sorted[j + 1] = temp;
+        int[] sortedArray = Arrays.copyOf(array, array.length);
+        boolean sorted;
+        for (int i = 0; i < (sortedArray.length - 1); i++) {
+            sorted = false;
+            for (int j = 0; j < (sortedArray.length - 1); j++) {
+                if (sortedArray[j] > sortedArray[j + 1]) {
+                    swap(sortedArray, j, j + 1);
+                    sorted = true;
                 }
             }
+            if (sorted == false) {
+                break;
+            }
         }
-        return sorted;
+        return sortedArray;
+    }
+
+    private static void swap(int array[], int a, int b) {
+        int temp = array[a];
+        array[a] = array[b];
+        array[b] = temp;
     }
 }
