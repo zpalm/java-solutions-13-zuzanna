@@ -3,6 +3,8 @@ package pl.coderstrust.sieve;
 import java.util.Arrays;
 
 public class SieveOfEratosthenes {
+    
+    private static final int MULTIPLE_MARKER = 0;
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(sieve(12)));
@@ -11,36 +13,14 @@ public class SieveOfEratosthenes {
     }
 
     public static int[] sieve(int maximumNumber) {
-        int[] array = new int[maximumNumber - 1];
-        for (int i = 0; i < (maximumNumber - 1); i++) {
-            array[i] = i + 2;
-        }
-        int[] sievedArray = new int[howManyPrimes(array)];
-        for (int i = 0; i < array.length; i++) {
-            for (int j = i; j < array.length; j = j + array[i]) {
-                if (array[i] == 0) {
-                    break;
-                }
-                if (j == i) {
-                    continue;
-                }
-                array[j] = 0;
-            }
-        }
-        for (int i = 0; i < sievedArray.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (array[j] == 0) {
-                    continue;
-                }
-                sievedArray[i] = array[j];
-                array[j] = 0;
-                break;
-            }
-        }
+        int[] array = createArrayOfNumbers(2, maximumNumber);
+        int[] sievedArray = new int[countPrimes(array)];
+        markMultiples(array);
+        filterMultiples(array, sievedArray);
         return sievedArray;
     }
 
-    private static int howManyPrimes(int array[]) {
+    private static int countPrimes(int array[]) {
         int numberOfPrimesInArray = array.length;
         int count = 0;
         for (int i = array[array.length - 1]; i >= 0; i--) {
@@ -56,6 +36,42 @@ public class SieveOfEratosthenes {
             count = 0;
         }
         return numberOfPrimesInArray;
+    }
+
+    private static int[] createArrayOfNumbers(int from, int to) {
+        int[] array = new int[to - 1];
+        for (int i = 0; i < (to - 1); i++) {
+            array[i] = from;
+            from++;
+        }
+        return array;
+    }
+
+    private static void markMultiples(int[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i; j < numbers.length; j = j + numbers[i]) {
+                if (numbers[i] == MULTIPLE_MARKER) {
+                    break;
+                }
+                if (j == i) {
+                    continue;
+                }
+                numbers[j] = MULTIPLE_MARKER;
+            }
+        }
+    }
+
+    private static void filterMultiples(int[] filterFrom, int[] filterTo) {
+        for (int i = 0; i < filterTo.length; i++) {
+            for (int j = 0; j < filterFrom.length; j++) {
+                if (filterFrom[j] == MULTIPLE_MARKER) {
+                    continue;
+                }
+                filterTo[i] = filterFrom[j];
+                filterFrom[j] = MULTIPLE_MARKER;
+                break;
+            }
+        }
     }
 }
 
