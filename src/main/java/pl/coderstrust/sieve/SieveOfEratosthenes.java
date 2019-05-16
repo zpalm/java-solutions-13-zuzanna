@@ -3,7 +3,7 @@ package pl.coderstrust.sieve;
 import java.util.Arrays;
 
 public class SieveOfEratosthenes {
-    
+
     private static final int MULTIPLE_MARKER = 0;
 
     public static void main(String[] args) {
@@ -14,10 +14,10 @@ public class SieveOfEratosthenes {
 
     public static int[] sieve(int maximumNumber) {
         int[] array = createArrayOfNumbers(2, maximumNumber);
-        int[] sievedArray = new int[countPrimes(array)];
+        int[] primes = new int[countPrimes(array)];
         markMultiples(array);
-        filterMultiples(array, sievedArray);
-        return sievedArray;
+        filterMultiples(array, primes);
+        return primes;
     }
 
     private static int countPrimes(int array[]) {
@@ -39,7 +39,7 @@ public class SieveOfEratosthenes {
     }
 
     private static int[] createArrayOfNumbers(int from, int to) {
-        int[] array = new int[to - 1];
+        int[] array = new int[to - from + 1];
         for (int i = 0; i < (to - 1); i++) {
             array[i] = from;
             from++;
@@ -62,15 +62,14 @@ public class SieveOfEratosthenes {
     }
 
     private static void filterMultiples(int[] filterFrom, int[] filterTo) {
-        for (int i = 0; i < filterTo.length; i++) {
-            for (int j = 0; j < filterFrom.length; j++) {
-                if (filterFrom[j] == MULTIPLE_MARKER) {
-                    continue;
-                }
-                filterTo[i] = filterFrom[j];
-                filterFrom[j] = MULTIPLE_MARKER;
-                break;
+        int index = 0;
+        for (int j = 0; j < filterFrom.length; j++) {
+            if (filterFrom[j] == MULTIPLE_MARKER) {
+                continue;
             }
+            filterTo[index] = filterFrom[j];
+            filterFrom[j] = MULTIPLE_MARKER;
+            index++;
         }
     }
 }
