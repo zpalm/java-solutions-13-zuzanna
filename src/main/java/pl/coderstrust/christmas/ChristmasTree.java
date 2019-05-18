@@ -6,9 +6,9 @@ import java.util.List;
 
 public class ChristmasTree {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(printChristmasTree(5)));
-        System.out.println(Arrays.toString(printChristmasTree(7)));
-        System.out.println(Arrays.toString(printChristmasTree(10)));
+        System.out.println(Arrays.toString(printChristmasTree(5)).replace("[", "").replace("]", ""));
+        System.out.println(Arrays.toString(printChristmasTree(7)).replace("[", "").replace("]", ""));
+        System.out.println(Arrays.toString(printChristmasTree(10)).replace("[", "").replace("]", ""));
     }
 
     public static String[] printChristmasTree(int size) {
