@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class MultiplicationTable {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(printMultiplicationTable(4)));
-        System.out.println(Arrays.deepToString(printMultiplicationTable(7)));
-        System.out.println(Arrays.deepToString(printMultiplicationTable(10)));
-        System.out.println(Arrays.deepToString(printMultiplicationTable(12)));
+        System.out.println(Arrays.deepToString(getMultiplicationTable(4)));
+        System.out.println(Arrays.deepToString(getMultiplicationTable(7)));
+        System.out.println(Arrays.deepToString(getMultiplicationTable(10)));
+        System.out.println(Arrays.deepToString(getMultiplicationTable(12)));
     }
 
-    public static int[][] printMultiplicationTable(int size) {
+    public static int[][] getMultiplicationTable(int size) {
         if (size < 1 || size > 12) {
             System.out.println("Size must be greater than 0 and smaller or equal to 12.");
             throw new IllegalArgumentException();

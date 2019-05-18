@@ -7,7 +7,7 @@ public class MultiplicationTableTest {
 
     @Test
     public void shouldReturnResultsForSizeFive() {
-        int[][] actual = MultiplicationTable.printMultiplicationTable(5);
+        int[][] actual = MultiplicationTable.getMultiplicationTable(5);
         int[][] expected = {
                 {1, 2, 3, 4, 5},
                 {2, 4, 6, 8, 10},
@@ -20,7 +20,7 @@ public class MultiplicationTableTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldReturnInvalidValueMessage() {
-        MultiplicationTable.printMultiplicationTable(13);
+        MultiplicationTable.getMultiplicationTable(13);
     }
 
 }
