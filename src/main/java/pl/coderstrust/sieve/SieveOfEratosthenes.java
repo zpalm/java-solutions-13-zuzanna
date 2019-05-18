@@ -14,28 +14,20 @@ public class SieveOfEratosthenes {
 
     public static int[] sieve(int maximumNumber) {
         int[] array = createArrayOfNumbers(2, maximumNumber);
-        int[] primes = new int[countPrimes(array)];
         markMultiples(array);
+        int[] primes = new int[countPrimes(array)];
         filterMultiples(array, primes);
         return primes;
     }
 
     private static int countPrimes(int array[]) {
-        int numberOfPrimesInArray = array.length;
-        int count = 0;
-        for (int i = array[array.length - 1]; i >= 0; i--) {
-            for (int j = 1; j <= i; j++) {
-                if (i % j == 0) {
-                    count++;
-                }
-                if (count > 2) {
-                    numberOfPrimesInArray--;
-                    break;
-                }
+        int numberOfPrimes = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != MULTIPLE_MARKER) {
+                numberOfPrimes++;
             }
-            count = 0;
         }
-        return numberOfPrimesInArray;
+        return numberOfPrimes;
     }
 
     private static int[] createArrayOfNumbers(int from, int to) {
@@ -49,27 +41,22 @@ public class SieveOfEratosthenes {
 
     private static void markMultiples(int[] numbers) {
         for (int i = 0; i < numbers.length; i++) {
-            for (int j = i; j < numbers.length; j = j + numbers[i]) {
-                if (numbers[i] == MULTIPLE_MARKER) {
-                    break;
-                }
-                if (j == i) {
-                    continue;
-                }
+            if (numbers[i] == MULTIPLE_MARKER) {
+                continue;
+            }
+            for (int j = i + numbers[i]; j < numbers.length; j = j + numbers[i]) {
                 numbers[j] = MULTIPLE_MARKER;
             }
         }
     }
 
     private static void filterMultiples(int[] filterFrom, int[] filterTo) {
-        int index = 0;
-        for (int j = 0; j < filterFrom.length; j++) {
+        for (int i = 0, j = 0; j < filterFrom.length; j++) {
             if (filterFrom[j] == MULTIPLE_MARKER) {
                 continue;
             }
-            filterTo[index] = filterFrom[j];
+            filterTo[i++] = filterFrom[j];
             filterFrom[j] = MULTIPLE_MARKER;
-            index++;
         }
     }
 }
