@@ -1,34 +1,27 @@
 package pl.coderstrust.multiplication;
 
+import java.util.Arrays;
+
 public class MultiplicationTable {
 
     public static void main(String[] args) {
-        printMultiplicationTable(4);
-        System.out.println();
-        printMultiplicationTable(7);
-        System.out.println();
-        printMultiplicationTable(10);
-        System.out.println();
-        printMultiplicationTable(12);
+        System.out.println(Arrays.deepToString(getMultiplicationTable(4)));
+        System.out.println(Arrays.deepToString(getMultiplicationTable(7)));
+        System.out.println(Arrays.deepToString(getMultiplicationTable(10)));
+        System.out.println(Arrays.deepToString(getMultiplicationTable(12)));
     }
 
-    public static void printMultiplicationTable(int size) {
+    public static int[][] getMultiplicationTable(int size) {
         if (size < 1 || size > 12) {
-            System.out.println("Invalid value.");
+            System.out.println("Size must be greater than 0 and smaller or equal to 12.");
+            throw new IllegalArgumentException();
         }
-        System.out.printf("%6s", " ");
-        for (int i = 1; i <= size; i++) {
-            System.out.printf("%-6d", i);
-        }
-        System.out.println();
-        System.out.println();
-        for (int i = 1; i <= size; i++) {
-            System.out.printf("%-6d", i);
-            for (int j = 1; j <= size; j++) {
-                System.out.printf("%-6d", j * i);
+        int[][] result = new int[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                result[i][j] = (i + 1) * (j + 1);
             }
-            System.out.println();
-            System.out.println();
         }
+        return result;
     }
 }
