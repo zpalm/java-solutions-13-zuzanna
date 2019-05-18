@@ -7,7 +7,7 @@ public class ChristmasTreeTest {
 
     @Test
     public void shouldPrintATreeOfSizeSix() {
-        String[] actual = ChristmasTree.printChristmasTree(6);
+        String[] actual = ChristmasTree.getChristmasTree(6);
         String[] expected = {
                 "    *" +     System.getProperty("line.separator") +
                 "   ***" +    System.getProperty("line.separator") +
@@ -21,6 +21,6 @@ public class ChristmasTreeTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldReturnInvalidValueMessage() {
-        ChristmasTree.printChristmasTree(1);
+        ChristmasTree.getChristmasTree(1);
     }
 }
