@@ -20,7 +20,7 @@ public class SieveOfEratosthenes {
         return primes;
     }
 
-    private static int countPrimes(int array[]) {
+    private static int countPrimes(int[] array) {
         int numberOfPrimes = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] != MULTIPLE_MARKER) {
