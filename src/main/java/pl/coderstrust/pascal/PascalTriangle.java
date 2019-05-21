@@ -1,37 +1,32 @@
 package pl.coderstrust.pascal;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PascalTriangle {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(getPascalTriangle(4)).replace("[", "").replace("]", ""));
-        System.out.println(Arrays.toString(getPascalTriangle(7)).replace("[", "").replace("]", ""));
-        System.out.println(Arrays.toString(getPascalTriangle(11)).replace("[", "").replace("]", ""));
+        System.out.println(getPascalTriangle(4));
+        System.out.println(getPascalTriangle(7));
+        System.out.println(getPascalTriangle(11));
     }
 
-    public static String[] getPascalTriangle(int number) {
+    public static List<String> getPascalTriangle(int number) {
         if (number < 1) {
-            System.out.println("Number must be greater than 0.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Number must be greater than 0.");
         }
         List<String> result = new ArrayList<>();
         StringBuilder pascalTriangle = new StringBuilder();
         long nodeValue;
         for (int i = 0; i < number; i++) {
-            for (int j = 0; j < (number - i); j++) {
-                pascalTriangle.append(String.format("%3s", ""));
-            }
             for (int j = 0; j <= i; j++) {
                 nodeValue = factorial(i) / (factorial(j) * factorial(i - j));
-                pascalTriangle.append(String.format("%-6d", nodeValue));
+                pascalTriangle.append(nodeValue).append(" ");
             }
-            pascalTriangle.append(System.getProperty("line.separator"));
+            result.add(pascalTriangle.toString());
+            pascalTriangle.setLength(0);
         }
-        result.add(pascalTriangle.toString());
-        return result.toArray(new String[result.size()]);
+        return result;
     }
 
     private static long factorial(int number) {
