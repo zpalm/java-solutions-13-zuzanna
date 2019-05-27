@@ -8,7 +8,7 @@ public class FibonacciCheckerTest {
     @Test
     public void shouldReturnTrueForFive() {
         FibonacciChecker fibonacciChecker = new FibonacciChecker();
-        boolean actual = fibonacciChecker.isFibonacciNumber(5L);
+        boolean actual = fibonacciChecker.isFibonacciNumber(5);
         boolean expected = true;
         Assert.assertEquals(expected, actual);
     }

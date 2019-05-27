@@ -4,32 +4,30 @@ import java.util.HashMap;
 
 public class FibonacciChecker {
 
-    private static HashMap<Integer, Long> fibonacciNumbers;
-
-    static {
-        fibonacciNumbers = new HashMap<>();
-        fibonacciNumbers.put(0, 0L);
-        fibonacciNumbers.put(1, 1L);
-    }
+    private static long N;
+    private static HashMap<Long, Boolean> cache = new HashMap<Long, Boolean>();
 
     boolean isFibonacciNumber(long number) {
-        if (fibonacciNumbers.containsValue(number)) {
-            return true;
-        } else {
+        if (!cache.containsKey(number)) {
             return fibonacci(number);
         }
+        return cache.get(number);
     }
 
     private boolean fibonacci(long number) {
-        long temp = fibonacciNumbers.get(fibonacciNumbers.size() - 2);
-        long previousValue = fibonacciNumbers.get(fibonacciNumbers.size() - 1);
-        long actualValue = 0;
-        for (int i = fibonacciNumbers.size(); actualValue < number; i++) {
-            actualValue = temp + previousValue;
-            fibonacciNumbers.put(i, actualValue);
-            temp = previousValue;
-            previousValue = actualValue;
+        N = number;
+        double i = (Math.log(number) + Math.log(Math.sqrt(5))) / Math.log((Math.sqrt(5) + 1) / 2);
+        if (fib(i)) {
+            cache.put(number, true);
+            return true;
         }
-        return actualValue == number;
+        return false;
+    }
+
+    private boolean fib(double i) {
+        if (Math.round(((Math.pow((Math.sqrt(5) + 1) / 2, (int) Math.ceil(i))) / Math.sqrt(5))) == N || Math.round(((Math.pow((Math.sqrt(5) + 1) / 2, (int) Math.floor(i))) / Math.sqrt(5))) == N) {
+            return true;
+        }
+        return false;
     }
 }
