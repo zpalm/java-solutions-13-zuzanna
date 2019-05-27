@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PascalTriangleTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void shouldReturnCorrectPascalTriangle() {
@@ -22,11 +24,8 @@ public class PascalTriangleTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
     @Test
-    public void shouldThrowExceptionForInvalidArgument() throws IllegalArgumentException {
+    public void shouldThrowExceptionForInvalidArgument() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Number must be greater than 0.");
         PascalTriangle.getPascalTriangle(0);
