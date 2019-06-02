@@ -1,30 +1,32 @@
 package pl.coderstrust.pascal;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PascalTriangle {
 
     public static void main(String[] args) {
-        printPascalTriangle(4);
-        System.out.println();
-        printPascalTriangle(7);
-        System.out.println();
-        printPascalTriangle(11);
+        System.out.println(getPascalTriangle(4));
+        System.out.println(getPascalTriangle(7));
+        System.out.println(getPascalTriangle(11));
     }
 
-    public static void printPascalTriangle(int number) {
+    public static List<String> getPascalTriangle(int number) {
         if (number < 1) {
             throw new IllegalArgumentException("Number must be greater than 0.");
         }
-        long nodeValue = 0;
+        List<String> result = new ArrayList<>();
+        StringBuilder pascalTriangle = new StringBuilder();
+        long nodeValue;
         for (int i = 0; i < number; i++) {
-            for (int j = 0; j < (number - i); j++) {
-                System.out.printf("%3s", "");
-            }
             for (int j = 0; j <= i; j++) {
                 nodeValue = factorial(i) / (factorial(j) * factorial(i - j));
-                System.out.printf("%-6d", nodeValue);
+                pascalTriangle.append(nodeValue).append(" ");
             }
-            System.out.println();
+            result.add(pascalTriangle.toString());
+            pascalTriangle.setLength(0);
         }
+        return result;
     }
 
     private static long factorial(int number) {
