@@ -1,21 +1,13 @@
 package pl.coderstrust.sort;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CollectionSort implements SortingMethod {
 
     public int[] sort(int[] array) {
-        List<Integer> sortedList = new ArrayList<>(array.length);
-        for (int i : array) {
-            sortedList.add(i);
-        }
-        Collections.sort(sortedList);
-        int[] sortedArray = new int[array.length];
-        for (int i = 0; i < sortedArray.length; i++) {
-            sortedArray[i] = sortedList.get(i);
-        }
-        return sortedArray;
+        List<Integer> sortedList = Arrays.stream(array).boxed().sorted().collect(Collectors.toList());
+        return sortedList.stream().mapToInt(Integer::intValue).toArray();
     }
 }

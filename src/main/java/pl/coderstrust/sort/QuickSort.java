@@ -11,6 +11,9 @@ public class QuickSort implements SortingMethod {
     }
 
     private void sort(int[] array, int first, int last) {
+        if (array.length <= 1) {
+            return;
+        }
         int mid = array[(first + last) / 2];
         int i = first;
         int j = last;
