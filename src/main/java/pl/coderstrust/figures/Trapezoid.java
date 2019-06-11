@@ -19,22 +19,20 @@ public class Trapezoid implements Figure {
 
     public void setTopBase(double topBase) {
         if (this.bottomBase == topBase) {
-            throw new IllegalArgumentException("Bottom and lower base can't be of the same value.");
+            throw new IllegalArgumentException("Bottom and lower base must be of different value");
         } else if (topBase <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.topBase = topBase;
+            throw new IllegalArgumentException("Value must be positive.");
         }
+        this.topBase = topBase;
     }
 
     public void setBottomBase(double bottomBase) {
         if (bottomBase == this.topBase) {
-            throw new IllegalArgumentException("Bottom and lower base can't be of the same value.");
+            throw new IllegalArgumentException("Bottom and lower base must be of different value");
         } else if (bottomBase <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.bottomBase = bottomBase;
+            throw new IllegalArgumentException("Value must be positive.");
         }
+        this.bottomBase = bottomBase;
     }
 
     public void setHeight(double height) {
@@ -43,17 +41,13 @@ public class Trapezoid implements Figure {
 
     public Trapezoid(double topBase, double bottomBase, double height) {
         if (bottomBase == topBase) {
-            throw new IllegalArgumentException("Bottom and lower base can't be of the same value.");
+            throw new IllegalArgumentException("Bottom and lower base must be of different value");
         } else if (topBase <= 0 || bottomBase <= 0 || height <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.bottomBase = bottomBase;
-            this.topBase = topBase;
-            this.height = height;
+            throw new IllegalArgumentException("Value must be positive.");
         }
-    }
-
-    public Trapezoid() {
+        this.bottomBase = bottomBase;
+        this.topBase = topBase;
+        this.height = height;
     }
 
     public double calculateArea() {

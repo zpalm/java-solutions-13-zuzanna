@@ -29,8 +29,7 @@ public class SquareTest {
 
     @Test
     public void setAndGetSideTest() {
-        Square square = new Square();
-        square.setSide(side);
+        Square square = new Square(side);
         Assert.assertEquals(side, square.getSide(), 0);
     }
 

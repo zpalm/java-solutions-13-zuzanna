@@ -32,15 +32,13 @@ public class RectangleTest {
 
     @Test
     public void setAndGetLengthTest() {
-        Rectangle rectangle = new Rectangle();
-        rectangle.setLength(length);
+        Rectangle rectangle = new Rectangle(length, width);
         Assert.assertEquals(length, rectangle.getLength(), 0);
     }
 
     @Test
     public void setAndGetWidthTest() {
-        Rectangle rectangle = new Rectangle();
-        rectangle.setWidth(width);
+        Rectangle rectangle = new Rectangle(length, width);
         Assert.assertEquals(width, rectangle.getWidth(), 0);
     }
 

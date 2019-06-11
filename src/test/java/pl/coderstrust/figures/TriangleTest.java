@@ -32,15 +32,13 @@ public class TriangleTest {
 
     @Test
     public void setAndGetHeightTest() {
-        Triangle triangle = new Triangle();
-        triangle.setHeight(height);
+        Triangle triangle = new Triangle(height, base);
         Assert.assertEquals(height, triangle.getHeight(), 0);
     }
 
     @Test
     public void setAndGetBaseTest() {
-        Triangle triangle = new Triangle();
-        triangle.setBase(base);
+        Triangle triangle = new Triangle(height, base);
         Assert.assertEquals(base, triangle.getBase(), 0);
     }
 

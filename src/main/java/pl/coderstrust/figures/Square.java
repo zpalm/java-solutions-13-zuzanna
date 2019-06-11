@@ -1,28 +1,27 @@
 package pl.coderstrust.figures;
 
-public class Square extends Rectangle implements Figure {
+public class Square implements Figure {
+    private double side;
 
     public double getSide() {
-        return super.getWidth();
+        return side;
     }
 
     public void setSide(double side) {
         if (side <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            super.setWidth(side);
-            super.setLength(side);
+            throw new IllegalArgumentException("Value must be positive.");
         }
-    }
-
-    public Square() {
+        this.side = side;
     }
 
     public Square(double side) {
-        super(side, side);
+        if (side <= 0) {
+            throw new IllegalArgumentException("Value must be positive.");
+        }
+        this.side = side;
     }
 
     public double calculateArea() {
-        return super.calculateArea();
+        return this.side * this.side;
     }
 }

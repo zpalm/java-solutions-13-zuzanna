@@ -14,30 +14,24 @@ public class Rectangle implements Figure {
 
     public void setLength(double length) {
         if (length <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.length = length;
+            throw new IllegalArgumentException("Value must be positive.");
         }
+        this.length = length;
     }
 
     public void setWidth(double width) {
         if (width <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.width = width;
+            throw new IllegalArgumentException("Value must be positive.");
         }
+        this.width = width;
     }
 
     public Rectangle(double length, double width) {
         if (width <= 0 || length <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.length = length;
-            this.width = width;
+            throw new IllegalArgumentException("Value must be positive.");
         }
-    }
-
-    public Rectangle() {
+        this.length = length;
+        this.width = width;
     }
 
     public double calculateArea() {

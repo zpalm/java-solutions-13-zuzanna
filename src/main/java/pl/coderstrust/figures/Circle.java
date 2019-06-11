@@ -9,21 +9,16 @@ public class Circle implements Figure {
 
     public void setRadius(double radius) {
         if (radius <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.radius = radius;
+            throw new IllegalArgumentException("Value must be positive.");
         }
+        this.radius = radius;
     }
 
     public Circle(double radius) {
         if (radius <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.radius = radius;
+            throw new IllegalArgumentException("Value must be positive.");
         }
-    }
-
-    public Circle() {
+        this.radius = radius;
     }
 
     public double calculateArea() {

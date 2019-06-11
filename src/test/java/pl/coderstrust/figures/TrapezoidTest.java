@@ -35,22 +35,19 @@ public class TrapezoidTest {
 
     @Test
     public void setAndGetTopBaseTest() {
-        Trapezoid trapezoid = new Trapezoid();
-        trapezoid.setTopBase(topBase);
+        Trapezoid trapezoid = new Trapezoid(topBase, bottomBase, height);
         Assert.assertEquals(topBase, trapezoid.getTopBase(), 0);
     }
 
     @Test
     public void setAndGetBottomBaseTest() {
-        Trapezoid trapezoid = new Trapezoid();
-        trapezoid.setBottomBase(bottomBase);
+        Trapezoid trapezoid = new Trapezoid(topBase, bottomBase, height);
         Assert.assertEquals(bottomBase, trapezoid.getBottomBase(), 0);
     }
 
     @Test
     public void setAndGetHeightTest() {
-        Trapezoid trapezoid = new Trapezoid();
-        trapezoid.setHeight(height);
+        Trapezoid trapezoid = new Trapezoid(topBase, bottomBase, height);
         Assert.assertEquals(height, trapezoid.getHeight(), 0);
     }
 

@@ -14,30 +14,24 @@ public class Triangle implements Figure {
 
     public void setHeight(double height) {
         if (height <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.height = height;
+            throw new IllegalArgumentException("Value must be positive.");
         }
+        this.height = height;
     }
 
     public void setBase(double base) {
         if (base <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.base = base;
+            throw new IllegalArgumentException("Value must be positive.");
         }
+        this.base = base;
     }
 
     public Triangle(double height, double base) {
         if (height <= 0 || base <= 0) {
-            throw new IllegalArgumentException("Value can't be lower or equal to zero.");
-        } else {
-            this.height = height;
-            this.base = base;
+            throw new IllegalArgumentException("Value must be positive.");
         }
-    }
-
-    public Triangle() {
+        this.height = height;
+        this.base = base;
     }
 
     public double calculateArea() {
