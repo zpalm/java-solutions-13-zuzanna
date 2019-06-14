@@ -33,8 +33,8 @@ public class ProcessorTest {
 
     @Test
     @Parameters({
-            "2    3  5   7     11  13  17 19   23 29, 2+3+5+7+11+13+17+19+23+29=129",
-            "127  131   137 139 149   151 157   163 167   173, 127+131+137+139+149+151+157+163+167+173=1494"
+            "2    3  5   7     11    13  17  19   23    29    | 2+3+5+7+11+13+17+19+23+29=129",
+            "127  131   137 139 149   151 157   163 167   173 | 127+131+137+139+149+151+157+163+167+173=1494"
     })
     public void process(String line, String processedLine) throws IOException {
         when(fileProcessor.readLinesFromFile("testInput.txt")).thenReturn(Arrays.asList(line));
