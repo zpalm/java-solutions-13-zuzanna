@@ -13,10 +13,11 @@ import java.util.List;
 public class FileProcessorTest {
 
     @Test
-    public void readLinesFromFile() {
+    public void readLinesFromFile() throws IOException {
         FileProcessor fileProcessor = new FileProcessor();
         List<String> result = fileProcessor.readLinesFromFile(ClassLoader.getSystemResource("testInput.txt").getFile());
-        List<String> expected = Arrays.asList("         ",
+        List<String> expected = Arrays.asList(
+                "         ",
                 "Not a number",
                 "   1     2  3     4",
                 "5 6 7    8"
@@ -27,7 +28,8 @@ public class FileProcessorTest {
     @Test
     public void writeLinesToFile() throws IOException {
         FileProcessor fileProcessor = new FileProcessor();
-        List<String> test = Arrays.asList("1+2+3+4=10",
+        List<String> test = Arrays.asList(
+                "1+2+3+4=10",
                 "",
                 "1+1+1+1+1=5"
         );

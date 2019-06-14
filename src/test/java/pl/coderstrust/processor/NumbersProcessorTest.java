@@ -10,9 +10,12 @@ import org.junit.runner.RunWith;
 public class NumbersProcessorTest {
 
     @Test
-    @Parameters({"         , ",
-            "Not a number, ",
-            "1   2    3   4, 1+2+3+4=10"})
+    @Parameters({
+            "0 0 0, 0+0+0=0",
+            "1  2   3  4, 1+2+3+4=10",
+            "         , ",
+            "Not a number, "
+    })
     public void processLine(String line, String processedLine) {
         NumbersProcessor numbersProcessor = new NumbersProcessor();
         Assert.assertEquals(processedLine, numbersProcessor.processLine(line));

@@ -1,29 +1,24 @@
 package pl.coderstrust.processor;
 
+import java.util.Scanner;
+
 public class NumbersProcessor {
 
     public String processLine(String line) {
-        if (line.trim().length() == 0 || line.matches("(.*)\\p{Alpha}(.*)")) {
+        int number;
+        int sum = 0;
+        StringBuilder result = new StringBuilder();
+        Scanner scanner = new Scanner(line);
+        if (!scanner.hasNextInt()) {
             return "";
         }
-        String[] lines = line.trim().split("\\W+");
-        int[] numbers = new int[lines.length];
-        for (int i = 0; i < lines.length; i++) {
-            numbers[i] = Integer.parseInt(lines[i]);
-        }
-        int sum = 0;
-        for (int number : numbers) {
+        while (scanner.hasNextInt()) {
+            number = scanner.nextInt();
             sum = sum + number;
+            result.append(number).append("+");
         }
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < numbers.length; i++) {
-            result.append(numbers[i]);
-            if (i < numbers.length - 1) {
-                result.append("+");
-            } else {
-                result.append("=").append(sum);
-            }
-        }
+        result.deleteCharAt(result.length() - 1);
+        result.append("=").append(sum);
         return result.toString();
     }
 }

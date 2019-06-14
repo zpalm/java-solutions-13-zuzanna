@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FileProcessor {
 
-    public List<String> readLinesFromFile(String fileName) {
+    public List<String> readLinesFromFile(String fileName) throws IOException {
         List<String> lines = new ArrayList<>();
         try (FileReader reader = new FileReader(new File(fileName));
              BufferedReader bufferedReader = new BufferedReader(reader)) {
@@ -14,22 +14,16 @@ public class FileProcessor {
             while ((line = bufferedReader.readLine()) != null) {
                 lines.add(line);
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Couldn't read the file!");
         }
         return lines;
     }
 
-    public void writeLinesToFile(List<String> resultLines, String resultFileName) {
-        File file = new File("src/test/resources/" + resultFileName);
+    public void writeLinesToFile(List<String> lines, String fileName) throws IOException {
+        File file = new File("src/test/resources/" + fileName);
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)))) {
-            for (String resultLine : resultLines) {
+            for (String resultLine : lines) {
                 writer.write(resultLine + "\n");
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Couldn't write to a new file!");
         }
     }
 }
