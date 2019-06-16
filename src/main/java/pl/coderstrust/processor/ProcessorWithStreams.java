@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public class ProcessorWithStreams {
 
-    public void process(String fileName, String resultFileName) {
+    public void process(String fileName, String resultFileName) throws IOException {
         File file = new File("src/test/resources/" + resultFileName);
         try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
              Stream<String> stream = Files.lines(Paths.get("src/test/resources/" + fileName))) {
@@ -28,8 +28,6 @@ public class ProcessorWithStreams {
                             e.printStackTrace();
                         }
                     });
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
