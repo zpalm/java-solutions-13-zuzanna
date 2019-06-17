@@ -4,7 +4,9 @@ import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import org.junit.Assert;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
@@ -45,5 +47,15 @@ public class IpAddressValidatorTest {
     @Parameters({"192.168.0.110", "172.16.254.1", "0.0.0.0", "255.255.255.255", "1.2.3.4", "1.10.100.255"})
     public void shouldReturnTrueForValidIpAddresses(String ipAddress) {
         Assert.assertTrue(IpAddressValidator.isIpAddress(ipAddress));
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void shouldThrowExceptionForNullArgument() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Input cannot be null.");
+        IpAddressValidator.isIpAddress(null);
     }
 }
