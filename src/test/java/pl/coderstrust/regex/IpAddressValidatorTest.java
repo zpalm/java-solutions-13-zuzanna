@@ -18,7 +18,7 @@ public class IpAddressValidatorTest {
             for (int j = 0; j <= 255; j++) {
                 for (int k = 0; k <= 255; k++) {
                     for (int l = 0; l <= 255; l++) {
-                        Assert.assertTrue(IpAddressValidator.isIpAddress(String.format("%1$d.%2$d.%3$d.%4$d", i, j, k, l)));
+                        Assert.assertTrue(IpAddressValidator.isIpAddress(String.format("%d.%d.%d.%d", i, j, k, l)));
                     }
                 }
             }
